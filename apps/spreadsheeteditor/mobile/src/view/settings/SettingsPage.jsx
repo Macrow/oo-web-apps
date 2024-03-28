@@ -17,10 +17,10 @@ const SettingsPage = inject('storeAppOptions', 'storeSpreadsheetInfo')(observer(
     const docTitle = storeSpreadsheetInfo.dataDoc?.title ?? '';
     const canCloseEditor = appOptions.canCloseEditor;
     const closeButtonText = canCloseEditor && appOptions.customization.close.text;
-    const navbar = 
+    const navbar =
         <Navbar>
             <div className="title" onClick={settingsContext.changeTitleHandler}>{docTitle}</div>
-            {Device.phone && 
+            {Device.phone &&
                 <NavRight><Link popupClose=".settings-popup">{_t.textDone}</Link></NavRight>
             }
         </Navbar>;
@@ -33,12 +33,12 @@ const SettingsPage = inject('storeAppOptions', 'storeSpreadsheetInfo')(observer(
     let _isEdit = false,
         _canDownload = false,
         _canDownloadOrigin = false,
-        _canAbout = true,
+        _canAbout = false,
         _canHelp = true,
         _canPrint = false,
         _canFeedback = true,
         _canDisplayInfo = true;
-        
+
     if (appOptions.isDisconnected) {
         _isEdit = false;
         if (!appOptions.enableDownload)
@@ -59,7 +59,7 @@ const SettingsPage = inject('storeAppOptions', 'storeSpreadsheetInfo')(observer(
             _canDisplayInfo = appOptions.customization.info !== false;
         }
     }
-    
+
     return (
         <Page>
             {navbar}
@@ -72,9 +72,9 @@ const SettingsPage = inject('storeAppOptions', 'storeSpreadsheetInfo')(observer(
                 {window.matchMedia("(max-width: 359px)").matches ?
                     <ListItem title={_t.textCollaboration} link="#" onClick={() => onOpenOptions('coauth')} className='no-indicator'>
                         <Icon slot="media" icon="icon-collaboration"></Icon>
-                    </ListItem> 
+                    </ListItem>
                 : null}
-                {_isEdit && 
+                {_isEdit &&
                     <ListItem link="/spreadsheet-settings/" title={_t.textSpreadsheetSettings}>
                         <Icon slot="media" icon="icon-table-settings"></Icon>
                     </ListItem>

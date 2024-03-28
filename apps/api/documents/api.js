@@ -73,7 +73,7 @@
                 location: <location>,
                 canCoAuthoring: <can coauthoring documents>,
                 canBackToFolder: <can return to folder> - deprecated. use "customization.goback" parameter,
-                createUrl: 'create document url', 
+                createUrl: 'create document url',
                 sharingSettingsUrl: 'document sharing settings url',
                 fileChoiceUrl: 'source url', // for mail merge or image from storage
                 callbackUrl: <url for connection between sdk and portal>,
@@ -123,7 +123,7 @@
                         logo: '',
                         logoDark: '', // logo for dark theme
                     },
-                    about: true,
+                    about: false,
                     feedback: {
                         visible: false,
                         url: http://...
@@ -176,7 +176,7 @@
                             view: {
                                 navigation: false/true // navigation button in de
                             } / false / true, // view tab
-                            save: false/true // save button on toolbar in 
+                            save: false/true // save button on toolbar in
                         } / false / true, // use instead of customization.toolbar,
                         header: {
                             users: false/true // users list button
@@ -501,7 +501,7 @@
 
                 _config.document.token = _config.token;
             }
-            
+
             return true;
         };
 
@@ -869,7 +869,7 @@
             lang: 'en',
             canCoAuthoring: true,
             customization: {
-                about: true,
+                about: false,
                 feedback: false
             }
         }

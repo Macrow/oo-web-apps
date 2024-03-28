@@ -33,8 +33,8 @@ const SettingsPage = inject('storeAppOptions', 'storeToolbarSettings', 'storePre
     let _isEdit = false,
         _canDownload = false,
         _canDownloadOrigin = false,
-        _canAbout = true,
-        _canHelp = true,
+        _canAbout = false,
+        _canHelp = false,
         _canPrint = false,
         _canFeedback = true,
         _canDisplayInfo = true;
@@ -59,7 +59,7 @@ const SettingsPage = inject('storeAppOptions', 'storeToolbarSettings', 'storePre
             _canDisplayInfo = appOptions.customization.info !== false;
         }
     }
-    
+
     return (
         <Page>
             {navbar}
@@ -72,9 +72,9 @@ const SettingsPage = inject('storeAppOptions', 'storeToolbarSettings', 'storePre
                 {window.matchMedia("(max-width: 374px)").matches ?
                     <ListItem title={_t.textCollaboration} link="#" onClick={() => onOpenOptions('coauth')} className='no-indicator'>
                         <Icon slot="media" icon="icon-collaboration"></Icon>
-                    </ListItem> 
+                    </ListItem>
                 : null}
-                {_isEdit && 
+                {_isEdit &&
                     <ListItem link="/presentation-settings/" title={_t.textPresentationSettings}>
                         <Icon slot="media" icon="icon-setup"></Icon>
                     </ListItem>
@@ -82,7 +82,7 @@ const SettingsPage = inject('storeAppOptions', 'storeToolbarSettings', 'storePre
                 <ListItem title={_t.textApplicationSettings} link="/application-settings/">
                     <Icon slot="media" icon="icon-app-settings"></Icon>
                 </ListItem>
-                {_isEdit && canUseHistory && 
+                {_isEdit && canUseHistory &&
                     <ListItem title={t('View.Settings.textVersionHistory')} link={!Device.phone ? "/version-history" : ""} onClick={() => {
                         if(Device.phone) {
                             onOpenOptions('history');

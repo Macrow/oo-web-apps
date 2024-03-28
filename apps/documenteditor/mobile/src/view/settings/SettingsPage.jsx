@@ -28,7 +28,7 @@ const SettingsPage = inject("storeAppOptions", "storeReview", "storeDocumentInfo
 
     const onOpenOptions = name => {
         openOptions(name);
-        settingsContext.closeModal(); 
+        settingsContext.closeModal();
     }
 
     // set mode
@@ -45,7 +45,7 @@ const SettingsPage = inject("storeAppOptions", "storeReview", "storeDocumentInfo
     let _isEdit = false,
         _canDownload = false,
         _canDownloadOrigin = false,
-        _canAbout = true,
+        _canAbout = false,
         _canHelp = true,
         _canPrint = false,
         _canFeedback = true,
@@ -71,7 +71,7 @@ const SettingsPage = inject("storeAppOptions", "storeReview", "storeDocumentInfo
             _canDisplayInfo = appOptions.customization.info !== false;
         }
     }
-    
+
     return (
         <Page>
             {navbar}
@@ -82,12 +82,12 @@ const SettingsPage = inject("storeAppOptions", "storeReview", "storeDocumentInfo
                             <Icon slot="media" icon={isFavorite ? "icon-remove-favorites" : "icon-add-favorites"}></Icon>
                         </ListItem>
                     : ''),
-                    (canFillForms && canSubmitForms ?   
+                    (canFillForms && canSubmitForms ?
                         <ListItem key='submit-form-link' title={t('Settings.textSubmit')} link='#' className='no-indicator' onClick={settingsContext.submitForm}>
                             <Icon slot="media" icon="icon-save-form"></Icon>
-                        </ListItem> 
+                        </ListItem>
                     : ''),
-                    (_canDownload && canFillForms && !canSubmitForms ? 
+                    (_canDownload && canFillForms && !canSubmitForms ?
                         <ListItem key='save-form-link' title={t('Settings.textSave')} link='#' className='no-indicator' onClick={settingsContext.saveAsPdf}>
                             <Icon slot="media" icon="icon-save-form"></Icon>
                         </ListItem>
@@ -115,11 +115,11 @@ const SettingsPage = inject("storeAppOptions", "storeReview", "storeDocumentInfo
                         <Icon slot="media" icon="icon-version-history"></Icon>
                     </ListItem>
                 }
-                {!isEditableForms ? 
+                {!isEditableForms ?
                     <ListItem title={t('Settings.textNavigation')} link={!Device.phone ? '/navigation' : '#'} onClick={() => {
                         if(Device.phone) {
                             onOpenOptions('navigation');
-                        } 
+                        }
                     }}>
                         <Icon slot="media" icon="icon-navigation"></Icon>
                     </ListItem>
